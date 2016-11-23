@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+  <display-name>Feedback Management System</display-name>
+  <servlet>
+    <servlet-name>HomeServletController</servlet-name>
+    <servlet-class>phong.feedback.mgm.controller.HomeServletController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HomeServletController</servlet-name>
+    <url-pattern>/home</url-pattern>
+    <url-pattern>/execute</url-pattern>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <!-- <servlet>
+    <servlet-name>AdminServletController</servlet-name>
+    <servlet-class>phong.feedback.mgm.controller.AdminServletController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServletController</servlet-name>
+    <url-pattern>/admin/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>StudentServletController</servlet-name>
+    <servlet-class>phong.feedback.mgm.controller.StudentServletController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentServletController</servlet-name>
+    <url-pattern>/student/*</url-pattern>
+  </servlet-mapping> -->
+ <!--  <filter>
+    <filter-name>AuthenticationLoginFilter</filter-name>
+    <filter-class>phong.feedback.mgm.filter.AuthenticationLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationLoginFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <url-pattern>/pages/admin/*</url-pattern>
+    <url-pattern>/admin/user/*</url-pattern>
+    <url-pattern>/admin/faculty/**</url-pattern>
+    <url-pattern>/student/*</url-pattern>
+  </filter-mapping> -->
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+  <context-param>
+    <param-name>log4j-config-location</param-name>
+    <param-value>WEB-INF/log4j.properties</param-value>
+  </context-param>
+  <session-config>
+    <session-timeout>10</session-timeout>
+  </session-config>
+</web-app>
