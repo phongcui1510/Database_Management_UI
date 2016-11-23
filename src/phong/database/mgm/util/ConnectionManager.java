@@ -1,4 +1,4 @@
-package phong.feedback.mgm.util;
+package phong.database.mgm.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

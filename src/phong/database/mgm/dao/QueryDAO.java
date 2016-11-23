@@ -1,4 +1,4 @@
-package phong.feedback.mgm.dao;
+package phong.database.mgm.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,12 +10,13 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import phong.feedback.mgm.model.Billing;
-import phong.feedback.mgm.model.CombineObject;
-import phong.feedback.mgm.model.Customer;
-import phong.feedback.mgm.model.Service;
-import phong.feedback.mgm.model.Vehicle;
-import phong.feedback.mgm.util.ConnectionManager;
+import phong.database.mgm.model.Billing;
+import phong.database.mgm.model.CombineObject;
+import phong.database.mgm.model.Customer;
+import phong.database.mgm.model.Service;
+import phong.database.mgm.model.Vehicle;
+import phong.database.mgm.util.ConnectionManager;
+
 
 public class QueryDAO {
 

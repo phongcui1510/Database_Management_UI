@@ -1,4 +1,4 @@
-package phong.feedback.mgm.controller;
+package phong.database.mgm.controller;
 
 import java.io.IOException;
 
@@ -6,12 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import phong.feedback.mgm.dao.QueryDAO;
-import phong.feedback.mgm.model.CombineObject;
+import phong.database.mgm.dao.QueryDAO;
+import phong.database.mgm.model.CombineObject;
 
 /**
  * Servlet implementation class LoginController
@@ -40,17 +39,6 @@ public class HomeServletController extends HttpServlet {
 		String url = request.getRequestURL().toString();
 		if (url.contains("home")) {
 			response.sendRedirect("home.jsp");
-		} else if (url.contains("login")) {
-			String error = request.getParameter("errorMsg");
-			if (error != null && !error.equalsIgnoreCase("")) {
-				request.setAttribute("errorMsg", error);
-			}
-			request.getRequestDispatcher("/login.jsp").forward(request,response);
-		} else if (url.contains("logout")) {
-			HttpSession session=request.getSession();
-			session.invalidate();
-			response.sendRedirect("home.jsp");
-			logger.info("Logout successfully");
 		}
 	}
 

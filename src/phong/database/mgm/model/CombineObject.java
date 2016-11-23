@@ -1,4 +1,4 @@
-package phong.feedback.mgm.model;
+package phong.database.mgm.model;
 
 import java.util.ArrayList;
 import java.util.List;
