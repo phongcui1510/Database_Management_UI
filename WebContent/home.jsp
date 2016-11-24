@@ -93,7 +93,7 @@
 				<textarea required placeholder="Place your query here" name="sql" type="text" value="${sql}" style="width: 500px; height: 100px"></textarea>
 			</div>
 			<br/>
-			<input id="submitBtn" type="submit"  value="Execute" style="background-color: #ff9999">
+			<input id="submitBtn" type="submit"  value="Execute" style="background-color: #ff9999; width: 100px; height: 30px">
 		</form>
 	</div>
 	<c:if test="${not empty msg }">
