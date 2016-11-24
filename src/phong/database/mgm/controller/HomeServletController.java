@@ -49,10 +49,15 @@ public class HomeServletController extends HttpServlet {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
 		String sql = request.getParameter("sql");
-		CombineObject result = queryDao.execute(sql);
-		request.setAttribute("rs", result);
-		request.setAttribute("sql", sql);
-		request.getRequestDispatcher("/home.jsp").forward(request,response);
+		if (sql.toLowerCase().contains("select")) {
+			CombineObject result = queryDao.executeSelectQuery(sql);
+			request.setAttribute("rs", result);
+			request.getRequestDispatcher("/home.jsp").forward(request,response);
+		} else {
+			int i = queryDao.executeUpdateQuery(sql);
+			request.setAttribute("msg", "Execute query done.");
+			request.getRequestDispatcher("/home.jsp").forward(request,response);
+		}
 	}
 
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="VehicleSellingUI-1.0">
+    <wb-module deploy-name="DatabaseManagementUI-1.0">
         <wb-resource deploy-path="/WEB-INF/web.xml" source-path="/WebContent/WEB-INF/web.xml"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="java-output-path" value="/standard-servlet-jsp-example/build/classes"/>
-        <property name="context-root" value="VehicleSellingUI"/>
+        <property name="context-root" value="DatabaseManagementUI"/>
     </wb-module>
 </project-modules>

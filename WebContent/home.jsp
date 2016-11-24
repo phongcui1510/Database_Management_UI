@@ -14,9 +14,37 @@
 <script type="text/javascript"
 	src="<c:url value="/javascript/lib/bootstrap/bootstrap.js"/>"></script>
 <title>Home</title>
+<style type="text/css">
+	table {
+	  border-collapse:collapse;
+	  font:normal normal 11px Verdana,Arial,Sans-Serif;
+	  color:#6F0A0A;
+	}
+	
+	table tr {
+	  background:#FFE5E5;
+	}
+	
+	table th,
+	table td {
+	  vertical-align:top;
+	  padding:5px 10px;
+	  border:1px solid #fff;
+	}
+	
+	table tr:nth-child(even) {
+	  background:#f5f5f5;
+	}
+	
+	table th {
+	  background:#A00F0F;
+	  color:#fff;
+	  font-weight:bold;
+	}
+</style>
 </head>
 <body>
-	<div class="container">
+	<%-- <div class="container">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
@@ -28,9 +56,9 @@
 							method="post">
 							<fieldset>
 								<div class="form-group">
-									<input required class="form-control"
+									<textarea required class="form-control"
 										placeholder="Place your query here" name="sql" type="text"
-										value="${sql}">
+										value="${sql}"></textarea>
 								</div>
 								<input id="submitBtn" type="submit"
 									class="btn btn-success btn-block" value="Execute">
@@ -38,109 +66,56 @@
 						</form>
 					</div>
 				</div>
-				<c:if test="${rs.showMsg && (not empty rs.errorMsg || (empty rs.service && empty rs.customer && empty rs.billing && empty rs.vehicle))}">
-						<p>No records found</p>
-					</c:if>
-					<c:if test="${not empty rs.selectQuery && !rs.selectQuery}">
-						<p>Execute sql done.</p>
-					</c:if>
 			</div>
+			<table>
+				<thead>
+					<tr>
+						<c:forEach items="${rs.header}" var="h">
+							<td>${h }</td>
+						</c:forEach>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${rs.data }" var="row">
+						<tr>
+							<c:forEach items="${rs.header}" var="h">
+								<td>${row[h]}</td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
-		<c:if test="${not empty rs.customer}">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th>Customer ID</th>
-						<th>Customer Name</th>
-						<th>Address</th>
-						<th>Email</th>
-						<th>Phone</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${rs.customer}" var="customer">
-						<tr>
-							<td>${customer.customer_id}</td>
-							<td>${customer.name}</td>
-							<td>${customer.address}</td>
-							<td>${customer.email}</td>
-							<td>${customer.phone}</td>
-						</tr>
+	</div> --%>
+	<div style="margin: 20px">
+		<form action="${pageContext.request.contextPath}/execute" method="post">
+			<div>
+				<textarea required placeholder="Place your query here" name="sql" type="text" value="${sql}" style="width: 500px; height: 100px"></textarea>
+			</div>
+			<br/>
+			<input id="submitBtn" type="submit"  value="Execute" style="background-color: #ff9999">
+		</form>
+	</div>
+	<c:if test="${not empty msg }">
+		<div style="margin: 20px">
+			${msg }
+		</div>
+	</c:if>
+	<div style="margin: 20px">
+		<table>
+			<tr>
+				<c:forEach items="${rs.header}" var="h">
+					<th>${h }</th>
+				</c:forEach>
+			</tr>
+			<c:forEach items="${rs.data }" var="row">
+				<tr>
+					<c:forEach items="${rs.header}" var="column">
+						<td>${row[column]}</td>
 					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
-		<br/>
-		<c:if test="${not empty rs.vehicle}">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th>Vehicle ID</th>
-						<th>Model</th>
-						<th>Price</th>
-						<th>Year</th>
-						<th>Color</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${rs.vehicle}" var="vehicle">
-						<tr>
-							<td>${vehicle.vehicle_id}</td>
-							<td>${vehicle.model}</td>
-							<td>${vehicle.price}</td>
-							<td>${vehicle.year}</td>
-							<td>${vehicle.color}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
-		<br/>
-		<c:if test="${not empty rs.billing}">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th>Billing ID</th>
-						<th>Payment Date</th>
-						<th>Payment Method</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${rs.billing}" var="billing">
-						<tr>
-							<td>${billing.billing_id}</td>
-							<td>${billing.payment_date}</td>
-							<td>${billing.payment_method}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
-		<br/>
-		<c:if test="${not empty rs.service}">
-			<table class="table table-condensed">
-				<thead>
-					<tr>
-						<th>Service ID</th>
-						<th>Problem Type</th>
-						<th>Estimate Time</th>
-						<th>Estimate Price</th>
-						<th>Completion Date</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${rs.service}" var="service">
-						<tr>
-							<td>${service.service_id}</td>
-							<td>${service.problem_type}</td>
-							<td>${service.estimate_time}</td>
-							<td>${service.estimate_price}</td>
-							<td>${service.completion_date}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</c:if>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>
