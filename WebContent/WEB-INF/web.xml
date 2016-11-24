@@ -7,7 +7,7 @@
   <display-name>Feedback Management System</display-name>
   <servlet>
     <servlet-name>HomeServletController</servlet-name>
-    <servlet-class>phong.database.mgm.controller.HomeServletController</servlet-class>
+    <servlet-class>ui.database.mgm.controller.HomeServletController</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>HomeServletController</servlet-name>

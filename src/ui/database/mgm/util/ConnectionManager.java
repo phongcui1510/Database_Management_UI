@@ -1,4 +1,4 @@
-package phong.database.mgm.util;
+package ui.database.mgm.util;
 
 import java.io.IOException;
 import java.io.InputStream;

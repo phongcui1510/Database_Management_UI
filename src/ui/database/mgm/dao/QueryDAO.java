@@ -1,4 +1,4 @@
-package phong.database.mgm.dao;
+package ui.database.mgm.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +12,9 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import phong.database.mgm.model.CombineObject;
-import phong.database.mgm.util.ConnectionManager;
+import ui.database.mgm.model.CombineObject;
+import ui.database.mgm.util.ConnectionManager;
+
 
 
 public class QueryDAO {

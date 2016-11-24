@@ -1,4 +1,4 @@
-package phong.database.mgm.model;
+package ui.database.mgm.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package phong.database.mgm.controller;
+package ui.database.mgm.controller;
 
 import java.io.IOException;
 
@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import phong.database.mgm.dao.QueryDAO;
-import phong.database.mgm.model.CombineObject;
+import ui.database.mgm.dao.QueryDAO;
+import ui.database.mgm.model.CombineObject;
+
 
 /**
  * Servlet implementation class LoginController
@@ -52,6 +53,7 @@ public class HomeServletController extends HttpServlet {
 		if (sql.toLowerCase().contains("select")) {
 			CombineObject result = queryDao.executeSelectQuery(sql);
 			request.setAttribute("rs", result);
+			request.setAttribute("msg", "Found " + result.getData().size() + " records.");
 			request.getRequestDispatcher("/home.jsp").forward(request,response);
 		} else {
 			int i = queryDao.executeUpdateQuery(sql);
