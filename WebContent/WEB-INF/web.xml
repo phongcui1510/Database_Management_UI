@@ -15,22 +15,6 @@
     <url-pattern>/execute</url-pattern>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  <!-- <servlet>
-    <servlet-name>AdminServletController</servlet-name>
-    <servlet-class>phong.feedback.mgm.controller.AdminServletController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminServletController</servlet-name>
-    <url-pattern>/admin/*</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>StudentServletController</servlet-name>
-    <servlet-class>phong.feedback.mgm.controller.StudentServletController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StudentServletController</servlet-name>
-    <url-pattern>/student/*</url-pattern>
-  </servlet-mapping> -->
  <!--  <filter>
     <filter-name>AuthenticationLoginFilter</filter-name>
     <filter-class>phong.feedback.mgm.filter.AuthenticationLoginFilter</filter-class>
