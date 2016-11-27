@@ -44,49 +44,12 @@
 </style>
 </head>
 <body>
-	<%-- <div class="container">
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">Vehicle Selling Management</h3>
-					</div>
-					<div class="panel-body">
-						<form action="${pageContext.request.contextPath}/execute"
-							method="post">
-							<fieldset>
-								<div class="form-group">
-									<textarea required class="form-control"
-										placeholder="Place your query here" name="sql" type="text"
-										value="${sql}"></textarea>
-								</div>
-								<input id="submitBtn" type="submit"
-									class="btn btn-success btn-block" value="Execute">
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div>
-			<table>
-				<thead>
-					<tr>
-						<c:forEach items="${rs.header}" var="h">
-							<td>${h }</td>
-						</c:forEach>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${rs.data }" var="row">
-						<tr>
-							<c:forEach items="${rs.header}" var="h">
-								<td>${row[h]}</td>
-							</c:forEach>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-	</div> --%>
+	<c:if test="${not empty currentUser}">
+		<p style="float: right; margin: 0px">Login as ${currentUser.username} <a href="${pageContext.request.contextPath}/logout">Logout</a></p>
+	</c:if>
+	<c:if test="${empty currentUser}">
+		<a href="${pageContext.request.contextPath}/login" style="float: right">Login</a>
+	</c:if>
 	<div style="margin: 20px">
 		<form action="${pageContext.request.contextPath}/execute" method="post">
 			<div>

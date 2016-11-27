@@ -13,19 +13,24 @@
     <servlet-name>HomeServletController</servlet-name>
     <url-pattern>/home</url-pattern>
     <url-pattern>/execute</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>UserServletController</servlet-name>
+    <servlet-class>ui.database.mgm.controller.UserServletController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServletController</servlet-name>
+    <url-pattern>/login</url-pattern>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
- <!--  <filter>
+<!--  <filter>
     <filter-name>AuthenticationLoginFilter</filter-name>
-    <filter-class>phong.feedback.mgm.filter.AuthenticationLoginFilter</filter-class>
+    <filter-class>ui.database.mgm.filter.AuthenticationLoginFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>AuthenticationLoginFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <url-pattern>/pages/admin/*</url-pattern>
-    <url-pattern>/admin/user/*</url-pattern>
-    <url-pattern>/admin/faculty/**</url-pattern>
-    <url-pattern>/student/*</url-pattern>
+    <url-pattern>/admin/*</url-pattern>
+    <url-pattern>/customer/*</url-pattern>
   </filter-mapping> -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
