@@ -37,8 +37,6 @@ public class HomeServletController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String url = request.getRequestURL().toString();
 		if (url.contains("home")) {
 			response.sendRedirect("home.jsp");
@@ -49,17 +47,16 @@ public class HomeServletController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 		String sql = request.getParameter("sql");
 		HttpSession session = request.getSession();
 		User user = (User)session.getAttribute("currentUser");
+		logger.info("URI: " + request.getRequestURI());
 		if (sql.toLowerCase().contains("select")) {
 			CombineObject result = queryDao.executeSelectQuery(sql);
 			request.setAttribute("rs", result);
 			request.setAttribute("msg", "Found " + result.getData().size() + " records.");
 			request.getRequestDispatcher("/home.jsp").forward(request,response);
-		} else if (user != null && user.getUsername().equalsIgnoreCase("admin")) {
+		} else if (user != null && user.getRole().equalsIgnoreCase("admin")) {
 			int i = queryDao.executeUpdateQuery(sql);
 			request.setAttribute("msg", "Execute query done.");
 			request.getRequestDispatcher("/home.jsp").forward(request,response);

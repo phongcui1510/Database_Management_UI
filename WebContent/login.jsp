@@ -29,10 +29,6 @@
 					<td><input placeholder="Password" name="password" type="password" required/></td>
 				</tr>
 			</table>
-	<!-- 		<label style="">Username </label> -->
-	<!-- 		<input placeholder="Username" name="username" type="text" autofocus required><br/> -->
-	<!-- 		<label>Password</label> -->
-	<!-- 		<input placeholder="Password" name="password" type="password" required><br/><br/> -->
 			<input type="submit" class="btn btn-success btn-block" value="Login" style="background-color: #ff9999; width: 100px; height: 30px">
 		</form>
 	</div>

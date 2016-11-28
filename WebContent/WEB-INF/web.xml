@@ -23,22 +23,7 @@
     <url-pattern>/login</url-pattern>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-<!--  <filter>
-    <filter-name>AuthenticationLoginFilter</filter-name>
-    <filter-class>ui.database.mgm.filter.AuthenticationLoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>AuthenticationLoginFilter</filter-name>
-    <url-pattern>/admin/*</url-pattern>
-    <url-pattern>/customer/*</url-pattern>
-  </filter-mapping> -->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
   <context-param>

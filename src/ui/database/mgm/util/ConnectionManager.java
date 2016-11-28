@@ -24,20 +24,12 @@ public class ConnectionManager {
 			String username = properties.getProperty("database.username");
 			String password = properties.getProperty("database.password");
 			String driver = properties.getProperty("database.driver");
-			// assuming "DataSource" is your DataSource name
 
 			Class.forName(driver);
-
 			con = DriverManager.getConnection(url, username, password);
-
-			// assuming your SQL Server's	username is "username"               
-			// and password is "password"
-		}
-
-		catch(ClassNotFoundException e) {
+		} catch(ClassNotFoundException e) {
 			System.out.println(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException ex) {
 			ex.printStackTrace();

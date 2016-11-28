@@ -61,7 +61,7 @@
 	</div>
 	<c:if test="${not empty msg }">
 		<div style="margin: 20px">
-			${msg }
+			${msg}
 		</div>
 	</c:if>
 	<div style="margin: 20px">

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import ui.database.mgm.dao.UserDAO;
 import ui.database.mgm.model.User;
 
 public class UserServletController extends HttpServlet {
@@ -20,6 +21,8 @@ public class UserServletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final Logger logger = Logger.getLogger (UserServletController.class);
+	
+	private UserDAO userDao = new UserDAO();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,13 +42,13 @@ public class UserServletController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")) {
-			User user = new User();
-			user.setUsername(username);
-			user.setPassword(password);
+		User user = userDao.findUserByUsernameAndPassword(username, password);
+		if (user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("currentUser", user);
 			request.getRequestDispatcher("home.jsp").forward(request,response);
+		} else {
+			response.sendRedirect("home.jsp");
 		}
 	}
 
