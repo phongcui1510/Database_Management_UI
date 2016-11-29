@@ -13,6 +13,38 @@
         <servlet-name>CustomerServletController</servlet-name>
         <url-pattern>/customer/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EmployeeServletController</servlet-name>
+        <servlet-class>ui.database.mgm.controller.EmployeeServletController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EmployeeServletController</servlet-name>
+        <url-pattern>/employee/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>VehicleServletController</servlet-name>
+        <servlet-class>ui.database.mgm.controller.VehicleServletController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VehicleServletController</servlet-name>
+        <url-pattern>/vehicle/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DealershipServletController</servlet-name>
+        <servlet-class>ui.database.mgm.controller.DealershipServletController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DealershipServletController</servlet-name>
+        <url-pattern>/dealership/*</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>InventoryServletController</servlet-name>
+        <servlet-class>ui.database.mgm.controller.InventoryServletController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InventoryServletController</servlet-name>
+        <url-pattern>/inventory/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeServletController</servlet-name>
         <url-pattern>/home</url-pattern>

@@ -113,6 +113,16 @@ public class CustomerServletController extends HttpServlet {
             } else {
            	 out.write("fail");
             }
+        } else if (url.contains("delete") && user.getRole().equalsIgnoreCase("ADMIN")) {
+        	String id = request.getParameter("id");
+        	int i = customerDao.deleteCustomer(Integer.valueOf(id));
+        	PrintWriter out = response.getWriter();
+            response.setContentType("text/plain");
+        	 if (i > 0) {
+           	 out.write("success");
+            } else {
+           	 out.write("fail");
+            }
         }
        
     }

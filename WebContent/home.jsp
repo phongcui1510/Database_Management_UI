@@ -128,6 +128,7 @@
                         <input id="clearCustomerBtn" type="button" value="Clear">
                         <input id="searchCustomerBtn" type="button" value="Search">
                         <input id="submitUpdateCustomerBtn" type="button" value="Update" style="display: none;">
+                        <div id="updateDeleteCustomerResult"></div>
                         <div id="searchCustomerResult"></div>
                     </div>
                     <div id="customer-tab-sub-tabs-2">
@@ -135,19 +136,19 @@
                             <table>
                                 <tr>
                                     <td>Customer Name</td>
-                                    <td><input type="text" name="name" required></td>
+                                    <td><input type="text" name="name"></td>
                                 </tr>
                                 <tr>
                                     <td>Address</td>
-                                    <td><input type="text" name="address" required></td>
+                                    <td><input type="text" name="address"></td>
                                 </tr>
                                 <tr>
                                     <td>Phone Number</td>
-                                    <td><input type="text" name="phone" required></td>
+                                    <td><input type="text" name="phone"></td>
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td><input type="text" name="email" required></td>
+                                    <td><input type="text" name="email"></td>
                                 </tr>
                             </table>
                         </form>
@@ -167,47 +168,71 @@
                             <table>
 			                    <tr>
 			                        <td>Employee ID</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="id"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Employee Name</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="name"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Address</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="address"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Phone Number</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="phone"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Email</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="email"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>Dealership</td>
+			                        <td>
+			                        	<select name="dealership">
+			                        		<option value="">-None-</option>
+			                        		<c:forEach items="${dealerships}" var="dealership">
+			                        			<option value="${dealership.id}">${dealership.name}</option>
+			                        		</c:forEach>
+			                        	</select>
+			                        </td>
 			                    </tr>
 			                </table>
                         </form>
+                         <input id="clearEmployeeBtn" type="button" value="Clear">
                         <input id="searchEmployeeBtn" type="button" value="Search">
+                        <input id="submitUpdateEmployeeBtn" type="button" value="Update" style="display: none;">
+                         <div id="updateDeleteEmployeeResult"></div>
                         <div id="searchEmployeeResult"></div>
                     </div>
                     <div id="employee-tab-sub-tabs-2">
-                        <form id="inserCustomerForm">
+                        <form id="insertEmployeeForm">
                             <table>
 			                    <tr>
 			                        <td>Employee Name</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="name"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Address</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="address"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Phone Number</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="phone"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Email</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="email"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>Dealership</td>
+			                        <td>
+			                        	<select name="dealership">
+			                        		<c:forEach items="${dealerships}" var="dealership">
+			                        			<option value="${dealership.id}">${dealership.name}</option>
+			                        		</c:forEach>
+			                        	</select>
+			                        </td>
 			                    </tr>
 			                </table>
                         </form>
@@ -227,52 +252,50 @@
                             <table>
 			                    <tr>
 			                        <td>Vehicle ID</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="id"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Model</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="model"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Price</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="number" name="price"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Year</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="number" name="year"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Color</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="color"></td>
 			                    </tr>
 			                </table>
                         </form>
+                        <input id="clearVehicleBtn" type="button" value="Clear">
                         <input id="searchVehicleBtn" type="button" value="Search">
-                        <input id="editVehicleBtn" type="button" value="Search" style="display: none;">
+                        <input id="submitUpdateVehicleBtn" type="button" value="Update" style="display: none;">
+                        <div id="updateDeleteVehicleResult"></div>
                         <div id="searchVehicleResult"></div>
                     </div>
                     <div id="vehicle-tab-sub-tabs-2">
-                        <form id="inserVehicleForm">
+                        <form id="insertVehicleForm">
                             <table>
 			                    <tr>
-			                        <td>Vehicle ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
 			                        <td>Model</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="model"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Price</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="number" name="price"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Year</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="number" name="year"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Color</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="color"></td>
 			                    </tr>
 			                </table>
                         </form>
@@ -332,7 +355,7 @@
                         <div id="searchBillingResult"></div>
                     </div>
                     <div id="billing-tab-sub-tabs-2">
-                        <form id="inserBillingForm">
+                        <form id="insertBillingForm">
                             <table>
 			                    <tr>
 			                        <td>Billing ID</td>
@@ -378,12 +401,90 @@
                 </div>
             </div>
             <div id="dealership-tab">
-                <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-                <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                <div class="sub-tabs">
+                    <ul>
+                        <li><a href="#dealership-tab-sub-tabs-1">SEARCH</a></li>
+                        <li><a href="#dealership-tab-sub-tabs-2">INSERT</a></li>
+                    </ul>
+                    <div id="dealership-tab-sub-tabs-1">
+                        <form id="searchDealershipForm">
+                            <table>
+			                    <tr>
+			                        <td>Dealership ID</td>
+			                        <td><input type="text" name="id"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>Name</td>
+			                        <td><input type="text" name="name"></td>
+			                    </tr>
+			                </table>
+                        </form>
+                        <input id="clearDealershipBtn" type="button" value="Clear">
+                        <input id="searchDealershipBtn" type="button" value="Search">
+                        <input id="submitUpdateDealershipBtn" type="button" value="Update" style="display: none;">
+                        <div id="updateDeleteDealershipResult"></div>
+                        <div id="searchDealershipResult"></div>
+                    </div>
+                    <div id="dealership-tab-sub-tabs-2">
+                        <form id="insertDealershipForm">
+                            <table>
+			                    <tr>
+			                        <td>Name</td>
+			                        <td><input type="text" name="name"></td>
+			                    </tr>
+			                </table>
+                        </form>
+                        <input id="insertDealershipBtn" type="button" value="Insert">
+                        <div id="insertDealershipResult"></div>
+                    </div>
+                </div>
             </div>
             <div id="inventory-tab">
-                <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-                <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+                <div class="sub-tabs">
+                    <ul>
+                        <li><a href="#inventory-tab-sub-tabs-1">SEARCH</a></li>
+                        <li><a href="#inventory-tab-sub-tabs-2">INSERT</a></li>
+                    </ul>
+                    <div id="inventory-tab-sub-tabs-1">
+                        <form id="searchInventoryForm">
+                            <table>
+			                    <tr>
+			                        <td>Inventory ID</td>
+			                        <td><input type="text" name="id"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>Inventory Name</td>
+			                        <td><input type="text" name="name"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>Address</td>
+			                        <td><input type="text" name="address"></td>
+			                    </tr>
+			                </table>
+                        </form>
+                         <input id="clearInventoryBtn" type="button" value="Clear">
+                        <input id="searchInventoryBtn" type="button" value="Search">
+                        <input id="submitUpdateInventoryBtn" type="button" value="Update" style="display: none;">
+                         <div id="updateDeleteInventoryResult"></div>
+                        <div id="searchInventoryResult"></div>
+                    </div>
+                    <div id="inventory-tab-sub-tabs-2">
+                        <form id="insertInventoryForm">
+                            <table>
+			                    <tr>
+			                        <td>Inventory Name</td>
+			                        <td><input type="text" name="name"></td>
+			                    </tr>
+			                    <tr>
+			                        <td>Address</td>
+			                        <td><input type="text" name="address"></td>
+			                    </tr>
+			                </table>
+                        </form>
+                        <input id="insertInventoryBtn" type="button" value="Insert">
+                        <div id="insertInventoryResult"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <script>
@@ -424,20 +525,51 @@
                         }
                     });
 			    });
+                $('body').on('click','#deleteCustomerBtn',function(){
+                	var element = this;
+                	if (confirm("Are you sure want to delete this record?") == true) {
+                		$.ajax({
+                            url: "customer/delete",
+                            method: "post",
+                            data: "id="+$(element).attr("customerid"),
+                            success: function (response) {
+                            	if (response == "success") {
+	                            	$("#updateDeleteCustomerResult").html("Delete customer successfully");
+	                            	$("#clearCustomerBtn").click();
+	                            	$("#searchCustomerBtn").click();
+	                            	
+                            	} else {
+                            		$("#updateDeleteCustomerResult").html("Delete customer fail");
+                            	}
+                            }
+                        });
+                	}
+			    });
                 $("#insertCustomerBtn").click(function(){
-                	$.ajax({
-                        url: "customer/insert",
-                        method: "post",
-                        //contentType: "application/json",
-                        data: $("#insertCustomerForm").serializeArray(),
-                        success: function (response) {
-                        	if (response == "success") {
-	                            $("#insertCustomerResult").html("Insert customer successfully");
-                        	} else {
-                        		$("#insertCustomerResult").html("Insert customer fail");
-                        	}
-                        }
-                    });
+                	var flag = false;
+                	$("#insertCustomerForm input").each(function(index, value){
+                		if ($(value).val()==''){
+                			flag = true;
+                		}
+                	});
+                	if (flag == true) {
+                		alert("Please fill the form");
+                	} else {
+                		$.ajax({
+                            url: "customer/insert",
+                            method: "post",
+                            //contentType: "application/json",
+                            data: $("#insertCustomerForm").serializeArray(),
+                            success: function (response) {
+                            	if (response == "success") {
+    	                            $("#insertCustomerResult").html("Insert customer successfully");
+                            	} else {
+                            		$("#insertCustomerResult").html("Insert customer fail");
+                            	}
+                            }
+                        });
+                	}
+                	
                 });
                 $("#submitUpdateCustomerBtn").click(function(){
                 	$.ajax({
@@ -447,9 +579,9 @@
                         data: $("#searchCustomerForm").serializeArray(),
                         success: function (response) {
                         	if (response == "success") {
-	                            $("#insertCustomerResult").html("Insert customer successfully");
+	                            $("#updateDeleteCustomerResult").html("Update customer successfully");
                         	} else {
-                        		$("#insertCustomerResult").html("Insert customer fail");
+                        		$("#updateDeleteCustomerResult").html("Update customer fail");
                         	}
                         }
                     });
@@ -463,9 +595,433 @@
                 	$("#searchCustomerForm input[name='phone']").val("");
                 	$("#searchCustomerForm input[name='email']").val("");
                 	$("#submitUpdateCustomerBtn").css("display","none");
-                })
+                });
+                
+                
+            	//  Employee
+                $("#searchEmployeeBtn").click(function(){
+                    $.ajax({
+                        url: "employee/search",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: $("#searchEmployeeForm").serializeArray(),
+                        success: function (responseXml) {
+                            $("#searchEmployeeResult").html($(responseXml).find("data").html());
+                        }
+                    });
+                 });
+                $('body').on('click','#editEmployeeBtn',function(){
+                	var element = this;
+                	
+                	$.ajax({
+                        url: "employee/search/json",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: "id="+$(element).attr("employeeid"),
+                        success: function (response) {
+                        	var arrayLength = response.length;
+                        	for (var i = 0; i < arrayLength; i++) {
+                        		$("#searchEmployeeForm input[name='id']").val(response[i].id);
+                        		$("#searchEmployeeForm input[name='id']").prop('disabled', true);
+                        		$("#searchEmployeeForm").append("<input type='hidden' value='"+ response[i].id + "' name='id'></input>");
+                        		$("#searchEmployeeForm input[name='name']").val(response[i].name);
+                        		$("#searchEmployeeForm input[name='address']").val(response[i].address);
+                        		$("#searchEmployeeForm input[name='phone']").val(response[i].phone);
+                        		$("#searchEmployeeForm input[name='email']").val(response[i].email);
+                        		$("#searchEmployeeForm select[name='dealership']").val(response[i].dealership);
+                        		$("#submitUpdateEmployeeBtn").css("display","inline");
+                        	}
+                        }
+                    });
+    		    });
+                $('body').on('click','#deleteEmployeeBtn',function(){
+                	var element = this;
+                	if (confirm("Are you sure want to delete this record?") == true) {
+                		$.ajax({
+                            url: "employee/delete",
+                            method: "post",
+                            data: "id="+$(element).attr("employeeid"),
+                            success: function (response) {
+                            	if (response == "success") {
+                                	$("#updateDeleteEmployeeResult").html("Delete employee successfully");
+                                	$("#clearEmployeeBtn").click();
+                                	$("#searchEmployeeBtn").click();
+                                	
+                            	} else {
+                            		$("#updateDeleteCustomerResult").html("Delete employee fail");
+                            	}
+                            }
+                        });
+                	}
+    		    });
+                $("#submitUpdateEmployeeBtn").click(function(){
+                	$.ajax({
+                        url: "employee/update",
+                        method: "post",
+                        data: $("#searchEmployeeForm").serializeArray(),
+                        success: function (response) {
+                        	if (response == "success") {
+                                $("#updateDeleteEmployeeResult").html("Update employee successfully");
+                        	} else {
+                        		$("#updateDeleteEmployeeResult").html("Update employee fail");
+                        	}
+                        }
+                    });
+                });
+                $("#insertEmployeeBtn").click(function(){
+                	var flag = false;
+                	$("#insertEmployeeForm input").each(function(index, value){
+                		if ($(value).val()==''){
+                			flag = true;
+                		}
+                	});
+                	if (flag == true) {
+                		alert("Please fill the form");
+                	} else {
+                		$.ajax({
+                            url: "employee/insert",
+                            method: "post",
+                            //contentType: "application/json",
+                            data: $("#insertEmployeeForm").serializeArray(),
+                            success: function (response) {
+                            	if (response == "success") {
+    	                            $("#insertEmployeeResult").html("Insert employee successfully");
+                            	} else {
+                            		$("#insertEmployeeResult").html("Insert employee fail");
+                            	}
+                            }
+                        });
+                	}
+                	
+                });
+                $("#clearEmployeeBtn").click(function(){
+                	$("#searchEmployeeForm").remove("input[type='hidden']");
+                	$("#searchEmployeeForm input[name='id']").prop('disabled', false);
+                	$("#searchEmployeeForm input[name='id']").val("");
+                	$("#searchEmployeeForm input[name='name']").val("");
+                	$("#searchEmployeeForm input[name='address']").val("");
+                	$("#searchEmployeeForm input[name='phone']").val("");
+                	$("#searchEmployeeForm input[name='email']").val("");
+                	$("#searchEmployeeForm select").val("");
+                	$("#submitUpdateEmployeeBtn").css("display","none");
+                });
+                
+                
+             // --- Vehicle-----
+                $("#searchVehicleBtn").click(function(){
+                    $.ajax({
+                        url: "vehicle/search",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: $("#searchVehicleForm").serializeArray(),
+                        success: function (responseXml) {
+                            $("#searchVehicleResult").html($(responseXml).find("data").html());
+                        }
+                    });
+                 });
+                $('body').on('click','#editVehicleBtn',function(){
+                	var element = this;
+                	
+                	$.ajax({
+                        url: "vehicle/search/json",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: "id="+$(element).attr("vehicleid"),
+                        success: function (response) {
+                        	var arrayLength = response.length;
+                        	for (var i = 0; i < arrayLength; i++) {
+                        		$("#searchVehicleForm input[name='id']").val(response[i].id);
+                        		$("#searchVehicleForm input[name='id']").prop('disabled', true);
+                        		$("#searchVehicleForm").append("<input type='hidden' value='"+ response[i].id + "' name='id'></input>");
+                        		$("#searchVehicleForm input[name='model']").val(response[i].model);
+                        		$("#searchVehicleForm input[name='year']").val(response[i].year);
+                        		$("#searchVehicleForm input[name='price']").val(response[i].price);
+                        		$("#searchVehicleForm input[name='color']").val(response[i].color);
+                        		$("#submitUpdateVehicleBtn").css("display","inline");
+                        	}
+                        }
+                    });
+    		    });
+                $('body').on('click','#deleteVehicleBtn',function(){
+                	var element = this;
+                	if (confirm("Are you sure want to delete this record?") == true) {
+                		$.ajax({
+                            url: "vehicle/delete",
+                            method: "post",
+                            data: "id="+$(element).attr("vehicleid"),
+                            success: function (response) {
+                            	if (response == "success") {
+                                	$("#updateDeleteVehicleResult").html("Delete vehicle successfully");
+                                	$("#clearVehicleBtn").click();
+                                	$("#searchVehicleBtn").click();
+                                	
+                            	} else {
+                            		$("#updateDeleteVehicleResult").html("Delete vehicle fail");
+                            	}
+                            }
+                        });
+                	}
+    		    });
+                $("#submitUpdateVehicleBtn").click(function(){
+                	$.ajax({
+                        url: "vehicle/update",
+                        method: "post",
+                        data: $("#searchVehicleForm").serializeArray(),
+                        success: function (response) {
+                        	if (response == "success") {
+                                $("#updateDeleteVehicleResult").html("Update vehicle successfully");
+                        	} else {
+                        		$("#updateDeleteVehicleResult").html("Update vehicle fail");
+                        	}
+                        }
+                    });
+                });
+                $("#insertVehicleBtn").click(function(){
+                	var flag = false;
+                	$("#insertVehicleForm input").each(function(index, value){
+                		if ($(value).val()==''){
+                			flag = true;
+                		}
+                	});
+                	if (flag == true) {
+                		alert("Please fill the form");
+                	} else {
+                		$.ajax({
+                            url: "vehicle/insert",
+                            method: "post",
+                            //contentType: "application/json",
+                            data: $("#insertVehicleForm").serializeArray(),
+                            success: function (response) {
+                            	if (response == "success") {
+    	                            $("#insertVehicleResult").html("Insert vehicle successfully");
+                            	} else {
+                            		$("#insertVehicleResult").html("Insert vehicle fail");
+                            	}
+                            }
+                        });
+                	}
+                	
+                });
+                $("#clearVehicleBtn").click(function(){
+                	$("#searchVehicleForm").remove("input[type='hidden']");
+                	$("#searchVehicleForm input[name='id']").prop('disabled', false);
+                	$("#searchVehicleForm input[name='id']").val("");
+                	$("#searchVehicleForm input[name='model']").val("");
+                	$("#searchVehicleForm input[name='year']").val("");
+                	$("#searchVehicleForm input[name='price']").val("");
+                	$("#searchVehicleForm input[name='color']").val("");
+                	$("#searchVehicleForm select").val("");
+                	$("#submitUpdateVehicleBtn").css("display","none");
+                });
+                
+                
+             // --- Dealership-----
+                $("#searchDealershipBtn").click(function(){
+                    $.ajax({
+                        url: "dealership/search",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: $("#searchDealershipForm").serializeArray(),
+                        success: function (responseXml) {
+                            $("#searchDealershipResult").html($(responseXml).find("data").html());
+                        }
+                    });
+                 });
+                $('body').on('click','#editDealershipBtn',function(){
+                	var element = this;
+                	
+                	$.ajax({
+                        url: "dealership/search/json",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: "id="+$(element).attr("dealershipid"),
+                        success: function (response) {
+                        	var arrayLength = response.length;
+                        	for (var i = 0; i < arrayLength; i++) {
+                        		$("#searchDealershipForm input[name='id']").val(response[i].id);
+                        		$("#searchDealershipForm input[name='id']").prop('disabled', true);
+                        		$("#searchDealershipForm").append("<input type='hidden' value='"+ response[i].id + "' name='id'></input>");
+                        		$("#searchDealershipForm input[name='name']").val(response[i].name);
+                        		$("#submitUpdateDealershipBtn").css("display","inline");
+                        	}
+                        }
+                    });
+    		    });
+                $('body').on('click','#deleteDealershipBtn',function(){
+                	var element = this;
+                	if (confirm("Are you sure want to delete this record?") == true) {
+                		$.ajax({
+                            url: "dealership/delete",
+                            method: "post",
+                            data: "id="+$(element).attr("dealershipid"),
+                            success: function (response) {
+                            	if (response == "success") {
+                                	$("#updateDeleteDealershipResult").html("Delete dealership successfully");
+                                	$("#clearDealershipBtn").click();
+                                	$("#searchDealershipBtn").click();
+                                	
+                            	} else {
+                            		$("#updateDeleteDealershipResult").html("Delete dealership fail");
+                            	}
+                            }
+                        });
+                	}
+    		    });
+                $("#submitUpdateDealershipBtn").click(function(){
+                	$.ajax({
+                        url: "dealership/update",
+                        method: "post",
+                        data: $("#searchDealershipForm").serializeArray(),
+                        success: function (response) {
+                        	if (response == "success") {
+                                $("#updateDeleteDealershipResult").html("Update dealership successfully");
+                        	} else {
+                        		$("#updateDeleteDealershipResult").html("Update dealership fail");
+                        	}
+                        }
+                    });
+                });
+                $("#insertDealershipBtn").click(function(){
+                	var flag = false;
+                	$("#insertDealershipForm input").each(function(index, value){
+                		if ($(value).val()==''){
+                			flag = true;
+                		}
+                	});
+                	if (flag == true) {
+                		alert("Please fill the form");
+                	} else {
+                		$.ajax({
+                            url: "dealership/insert",
+                            method: "post",
+                            //contentType: "application/json",
+                            data: $("#insertDealershipForm").serializeArray(),
+                            success: function (response) {
+                            	if (response == "success") {
+    	                            $("#insertDealershipResult").html("Insert dealership successfully");
+                            	} else {
+                            		$("#insertDealershipResult").html("Insert dealership fail");
+                            	}
+                            }
+                        });
+                	}
+                	
+                });
+                $("#clearDealershipBtn").click(function(){
+                	$("#searchDealershipForm").remove("input[type='hidden']");
+                	$("#searchDealershipForm input[name='id']").prop('disabled', false);
+                	$("#searchDealershipForm input[name='id']").val("");
+                	$("#searchDealershipForm input[name='name']").val("");
+                	$("#submitUpdateDealershipBtn").css("display","none");
+                });
+                
+                
+             // --- inventory-----
+                $("#searchInventoryBtn").click(function(){
+                    $.ajax({
+                        url: "inventory/search",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: $("#searchInventoryForm").serializeArray(),
+                        success: function (responseXml) {
+                            $("#searchInventoryResult").html($(responseXml).find("data").html());
+                        }
+                    });
+                 });
+                $('body').on('click','#editInventoryBtn',function(){
+                	var element = this;
+                	
+                	$.ajax({
+                        url: "inventory/search/json",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: "id="+$(element).attr("inventoryid"),
+                        success: function (response) {
+                        	var arrayLength = response.length;
+                        	for (var i = 0; i < arrayLength; i++) {
+                        		$("#searchInventoryForm input[name='id']").val(response[i].id);
+                        		$("#searchInventoryForm input[name='id']").prop('disabled', true);
+                        		$("#searchInventoryForm").append("<input type='hidden' value='"+ response[i].id + "' name='id'></input>");
+                        		$("#searchInventoryForm input[name='name']").val(response[i].name);
+                        		$("#searchInventoryForm input[name='address']").val(response[i].address);
+                        		$("#submitUpdateInventoryBtn").css("display","inline");
+                        	}
+                        }
+                    });
+    		    });
+                $('body').on('click','#deleteInventoryBtn',function(){
+                	var element = this;
+                	if (confirm("Are you sure want to delete this record?") == true) {
+                		$.ajax({
+                            url: "inventory/delete",
+                            method: "post",
+                            data: "id="+$(element).attr("inventoryid"),
+                            success: function (response) {
+                            	if (response == "success") {
+                                	$("#updateDeleteInventoryResult").html("Delete inventory successfully");
+                                	$("#clearInventoryBtn").click();
+                                	$("#searchInventoryBtn").click();
+                                	
+                            	} else {
+                            		$("#updateDeleteInventoryResult").html("Delete inventory fail");
+                            	}
+                            }
+                        });
+                	}
+    		    });
+                $("#submitUpdateInventoryBtn").click(function(){
+                	$.ajax({
+                        url: "inventory/update",
+                        method: "post",
+                        data: $("#searchInventoryForm").serializeArray(),
+                        success: function (response) {
+                        	if (response == "success") {
+                                $("#updateDeleteInventoryResult").html("Update inventory successfully");
+                        	} else {
+                        		$("#updateDeleteInventoryResult").html("Update inventory fail");
+                        	}
+                        }
+                    });
+                });
+                $("#insertInventoryBtn").click(function(){
+                	var flag = false;
+                	$("#insertInventoryForm input").each(function(index, value){
+                		if ($(value).val()==''){
+                			flag = true;
+                		}
+                	});
+                	if (flag == true) {
+                		alert("Please fill the form");
+                	} else {
+                		$.ajax({
+                            url: "inventory/insert",
+                            method: "post",
+                            //contentType: "application/json",
+                            data: $("#insertInventoryForm").serializeArray(),
+                            success: function (response) {
+                            	if (response == "success") {
+    	                            $("#insertInventoryResult").html("Insert inventory successfully");
+                            	} else {
+                            		$("#insertInventoryResult").html("Insert inventory fail");
+                            	}
+                            }
+                        });
+                	}
+                	
+                });
+                $("#clearInventoryBtn").click(function(){
+                	$("#searchInventoryForm").remove("input[type='hidden']");
+                	$("#searchInventoryForm input[name='id']").prop('disabled', false);
+                	$("#searchInventoryForm input[name='id']").val("");
+                	$("#searchInventoryForm input[name='name']").val("");
+                	$("#searchInventoryForm input[name='address']").val("");
+                	$("#submitUpdateInventoryBtn").css("display","none");
+                });
+                
+                
                 
             });
+            
         </script>
     </body>
 </html>

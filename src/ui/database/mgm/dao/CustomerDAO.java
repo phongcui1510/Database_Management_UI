@@ -37,25 +37,25 @@ public class CustomerDAO {
                 if (condition.length() != 0) {
                     condition.append(" and ");
                 }
-                condition.append("name like %" + customer.getName() + "%");
+                condition.append("name like '%" + customer.getName() + "%'");
             }
             if (customer.getAddress() != null && customer.getAddress() != "") {
                 if (condition.length() != 0) {
                     condition.append(" and ");
                 }
-                condition.append("address like %" + customer.getName() + "%");
+                condition.append("address like '%" + customer.getName() + "%'");
             }
             if (customer.getEmail() != null && customer.getEmail() != "") {
                 if (condition.length() != 0) {
                     condition.append(" and ");
                 }
-                condition.append("email like %" + customer.getEmail() + "%");
+                condition.append("email like '%" + customer.getEmail() + "%'");
             }
             if (customer.getPhone() != null && customer.getPhone() != "") {
                 if (condition.length() != 0) {
                     condition.append(" and ");
                 }
-                condition.append("phone like %" + customer.getPhone() + "%");
+                condition.append("phone_no like '%" + customer.getPhone() + "%'");
             }
             if (condition.length() != 0) {
                 sql.append(" where ").append(condition);
@@ -106,7 +106,7 @@ public class CustomerDAO {
 			}
 
 		} catch (Exception e) {
-			logger.info("Insert Feedback get error with info: " + e);
+			logger.info("Insert Customer get error with info: " + e);
 		} finally {
 			try {
 				con.close();
@@ -158,7 +158,35 @@ public class CustomerDAO {
 			}
 
 		} catch (Exception e) {
-			logger.info("Insert Feedback get error with info: " + e);
+			logger.info("Insert Customer get error with info: " + e);
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return 0;
+    }
+    
+    public int deleteCustomer (int id) {
+    	Connection con = ConnectionManager.getConnection();
+		try{  
+			StringBuffer sql = new StringBuffer();
+			sql.append("delete from customer where customer_id = ?");
+
+			PreparedStatement ps = con.prepareStatement(sql.toString());
+			ps.setInt(1, id);
+			
+			int i = ps.executeUpdate();  
+			if (i>0) {
+				logger.info("Delete Customer successfully with customer id = " + id);
+				return 1;
+			}
+
+		} catch (Exception e) {
+			logger.info("Delete Customer get error with info: " + e);
 		} finally {
 			try {
 				con.close();

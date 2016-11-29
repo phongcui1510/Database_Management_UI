@@ -1,6 +1,7 @@
 package ui.database.mgm.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import ui.database.mgm.dao.DealershipDAO;
 import ui.database.mgm.dao.UserDAO;
+import ui.database.mgm.model.Dealership;
 import ui.database.mgm.model.User;
 
 public class UserServletController extends HttpServlet {
@@ -23,6 +26,8 @@ public class UserServletController extends HttpServlet {
 	private static final Logger logger = Logger.getLogger (UserServletController.class);
 	
 	private UserDAO userDao = new UserDAO();
+	
+	private DealershipDAO dealershipDao = new DealershipDAO();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,9 +51,11 @@ public class UserServletController extends HttpServlet {
 		if (user != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("currentUser", user);
+			List<Dealership> dealerships = dealershipDao.findAllDealership();
+			request.setAttribute("dealerships", dealerships);
 			request.getRequestDispatcher("home.jsp").forward(request,response);
 		} else {
-			response.sendRedirect("home.jsp");
+			response.sendRedirect("login.jsp");
 		}
 	}
 
