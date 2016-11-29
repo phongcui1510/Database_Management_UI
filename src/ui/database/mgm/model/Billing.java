@@ -8,8 +8,25 @@ public class Billing {
 	private Date payment_date;
 	private String payment_method;
 	private Integer customer_id;
+	private String customer_name;
 	private Integer service_id;
 	private Integer sale_id;
+	private Integer vehicle_id;
+	private String vehicle_model;
+	private String service_name;
+	
+	public String getVehicle_model() {
+		return vehicle_model;
+	}
+	public void setVehicle_model(String vehicle_model) {
+		this.vehicle_model = vehicle_model;
+	}
+	public String getService_name() {
+		return service_name;
+	}
+	public void setService_name(String service_name) {
+		this.service_name = service_name;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -45,6 +62,18 @@ public class Billing {
 	}
 	public void setSale_id(Integer sale_id) {
 		this.sale_id = sale_id;
+	}
+	public Integer getVehicle_id() {
+		return vehicle_id;
+	}
+	public void setVehicle_id(Integer vehicle_id) {
+		this.vehicle_id = vehicle_id;
+	}
+	public String getCustomer_name() {
+		return customer_name;
+	}
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
 	}
 	
 }

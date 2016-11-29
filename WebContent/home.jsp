@@ -78,14 +78,14 @@
 
     </head>
     <body>
-<%--         <c:if test="${not empty currentUser}">
-            <p style="float: right; margin: 0px">Login as ${currentUser.username} <a href="${pageContext.request.contextPath}/logout">Logout</a></p>
+		 <c:if test="${not empty currentUser}">
+            <p style="margin: 0px">Login as ${currentUser.username} <a href="${pageContext.request.contextPath}/logout">Logout</a></p>
         </c:if>
         <c:if test="${empty currentUser}">
-            <a href="${pageContext.request.contextPath}/login" style="float: right">Login</a>
-        </c:if> --%>
+            <a href="${pageContext.request.contextPath}/login">Login</a>
+        </c:if>
         <c:set var="context" value="${pageContext.request.contextPath}" />
-        <div id="tabs">
+        <div id="tabs" style="margin-top: 20px">
             <ul>
                 <li><a href="#customer-tab">CUSTOMER</a></li>
                 <li><a href="#employee-tab">EMPLOYEE</a></li>
@@ -98,7 +98,9 @@
                 <div class="sub-tabs">
                     <ul>
                         <li><a href="#customer-tab-sub-tabs-1">SEARCH</a></li>
-                        <li><a href="#customer-tab-sub-tabs-2">INSERT</a></li>
+                        <c:if test="${currentUser.role == 'ADMIN'}">
+                        	<li><a href="#customer-tab-sub-tabs-2">INSERT</a></li>
+                        </c:if>
                     </ul>
                     <div id="customer-tab-sub-tabs-1">
                         <form id="searchCustomerForm">
@@ -131,44 +133,48 @@
                         <div id="updateDeleteCustomerResult"></div>
                         <div id="searchCustomerResult"></div>
                     </div>
-                    <div id="customer-tab-sub-tabs-2">
-                        <form id="insertCustomerForm">
-                            <table>
-                                <tr>
-                                    <td>Customer Name</td>
-                                    <td><input type="text" name="name"></td>
-                                </tr>
-                                <tr>
-                                    <td>Address</td>
-                                    <td><input type="text" name="address"></td>
-                                </tr>
-                                <tr>
-                                    <td>Phone Number</td>
-                                    <td><input type="text" name="phone"></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td><input type="text" name="email"></td>
-                                </tr>
-                            </table>
-                        </form>
-                        <input id="insertCustomerBtn" type="button" value="Insert">
-                        <div id="insertCustomerResult"></div>
-                    </div>
+                    <c:if test="${currentUser.role == 'ADMIN'}">
+	                    <div id="customer-tab-sub-tabs-2">
+	                        <form id="insertCustomerForm">
+	                            <table>
+	                                <tr>
+	                                    <td>Customer Name</td>
+	                                    <td><input type="text" name="name"></td>
+	                                </tr>
+	                                <tr>
+	                                    <td>Address</td>
+	                                    <td><input type="text" name="address"></td>
+	                                </tr>
+	                                <tr>
+	                                    <td>Phone Number</td>
+	                                    <td><input type="text" name="phone"></td>
+	                                </tr>
+	                                <tr>
+	                                    <td>Email</td>
+	                                    <td><input type="text" name="email"></td>
+	                                </tr>
+	                            </table>
+	                        </form>
+	                        <input id="insertCustomerBtn" type="button" value="Insert">
+	                        <div id="insertCustomerResult"></div>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
             <div id="employee-tab">
             	<div class="sub-tabs">
                     <ul>
                         <li><a href="#employee-tab-sub-tabs-1">SEARCH</a></li>
-                        <li><a href="#employee-tab-sub-tabs-2">INSERT</a></li>
+                        <c:if test="${currentUser.role == 'ADMIN'}">
+                        	<li><a href="#employee-tab-sub-tabs-2">INSERT</a></li>
+                        </c:if>
                     </ul>
                     <div id="employee-tab-sub-tabs-1">
                         <form id="searchEmployeeForm">
                             <table>
 			                    <tr>
 			                        <td>Employee ID</td>
-			                        <td><input type="text" name="id"></td>
+			                        <td><input type="number" name="id"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Employee Name</td>
@@ -205,54 +211,58 @@
                          <div id="updateDeleteEmployeeResult"></div>
                         <div id="searchEmployeeResult"></div>
                     </div>
-                    <div id="employee-tab-sub-tabs-2">
-                        <form id="insertEmployeeForm">
-                            <table>
-			                    <tr>
-			                        <td>Employee Name</td>
-			                        <td><input type="text" name="name"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Address</td>
-			                        <td><input type="text" name="address"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Phone Number</td>
-			                        <td><input type="text" name="phone"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Email</td>
-			                        <td><input type="text" name="email"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Dealership</td>
-			                        <td>
-			                        	<select name="dealership">
-			                        		<c:forEach items="${dealerships}" var="dealership">
-			                        			<option value="${dealership.id}">${dealership.name}</option>
-			                        		</c:forEach>
-			                        	</select>
-			                        </td>
-			                    </tr>
-			                </table>
-                        </form>
-                        <input id="insertEmployeeBtn" type="button" value="Insert">
-                        <div id="insertEmployeeResult"></div>
-                    </div>
+                    <c:if test="${currentUser.role == 'ADMIN'}">
+	                    <div id="employee-tab-sub-tabs-2">
+	                        <form id="insertEmployeeForm">
+	                            <table>
+				                    <tr>
+				                        <td>Employee Name</td>
+				                        <td><input type="text" name="name"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Address</td>
+				                        <td><input type="text" name="address"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Phone Number</td>
+				                        <td><input type="text" name="phone"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Email</td>
+				                        <td><input type="text" name="email"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Dealership</td>
+				                        <td>
+				                        	<select name="dealership">
+				                        		<c:forEach items="${dealerships}" var="dealership">
+				                        			<option value="${dealership.id}">${dealership.name}</option>
+				                        		</c:forEach>
+				                        	</select>
+				                        </td>
+				                    </tr>
+				                </table>
+	                        </form>
+	                        <input id="insertEmployeeBtn" type="button" value="Insert">
+	                        <div id="insertEmployeeResult"></div>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
             <div id="vehicle-tab">
             	<div class="sub-tabs">
                     <ul>
                         <li><a href="#vehicle-tab-sub-tabs-1">SEARCH</a></li>
-                        <li><a href="#vehicle-tab-sub-tabs-2">INSERT</a></li>
+                        <c:if test="${currentUser.role == 'ADMIN'}">
+                        	<li><a href="#vehicle-tab-sub-tabs-2">INSERT</a></li>
+                        </c:if>
                     </ul>
                     <div id="vehicle-tab-sub-tabs-1">
                         <form id="searchVehicleForm">
                             <table>
 			                    <tr>
 			                        <td>Vehicle ID</td>
-			                        <td><input type="text" name="id"></td>
+			                        <td><input type="number" name="id"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Model</td>
@@ -278,133 +288,155 @@
                         <div id="updateDeleteVehicleResult"></div>
                         <div id="searchVehicleResult"></div>
                     </div>
-                    <div id="vehicle-tab-sub-tabs-2">
-                        <form id="insertVehicleForm">
-                            <table>
-			                    <tr>
-			                        <td>Model</td>
-			                        <td><input type="text" name="model"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Price</td>
-			                        <td><input type="number" name="price"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Year</td>
-			                        <td><input type="number" name="year"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Color</td>
-			                        <td><input type="text" name="color"></td>
-			                    </tr>
-			                </table>
-                        </form>
-                        <input id="insertVehicleBtn" type="button" value="Insert">
-                        <div id="insertVehicleResult"></div>
-                    </div>
+                    <c:if test="${currentUser.role == 'ADMIN'}">
+	                    <div id="vehicle-tab-sub-tabs-2">
+	                        <form id="insertVehicleForm">
+	                            <table>
+				                    <tr>
+				                        <td>Model</td>
+				                        <td><input type="text" name="model"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Price</td>
+				                        <td><input type="number" name="price"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Year</td>
+				                        <td><input type="number" name="year"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Color</td>
+				                        <td><input type="text" name="color"></td>
+				                    </tr>
+				                </table>
+	                        </form>
+	                        <input id="insertVehicleBtn" type="button" value="Insert">
+	                        <div id="insertVehicleResult"></div>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
             <div id="billing-tab">
                 <div class="sub-tabs">
                     <ul>
                         <li><a href="#billing-tab-sub-tabs-1">SEARCH</a></li>
-                        <li><a href="#billing-tab-sub-tabs-2">INSERT</a></li>
+                        <c:if test="${currentUser.role == 'ADMIN'}">
+                        	<li><a href="#billing-tab-sub-tabs-2">INSERT</a></li>
+                        </c:if>
                     </ul>
                     <div id="billing-tab-sub-tabs-1">
                         <form id="searchBillingForm">
                             <table>
 			                    <tr>
 			                        <td>Billing ID</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="number" name="id"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Payment Method</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="text" name="payment_method"></td>
 			                    </tr>
 			                    <tr>
 			                        <td>Payment Date</td>
-			                        <td><input type="text"></td>
+			                        <td><input type="date" name="payment_date"></td>
 			                    </tr>
 			                    <tr>
-			                        <td>Customer ID</td>
-			                        <td><input type="text"></td>
+			                        <td>Customer</td>
+			                        <td>
+			                        	<select name="customer_id">
+			                        		<option value="">--None--</option>
+			                        		<c:forEach items="${customers}" var="customer">
+			                        			<option value="${customer.id}">${customer.name}</option>
+			                        		</c:forEach>
+			                        	</select>
+			                        </td>
 			                    </tr>
 			                    <tr>
-			                        <td>Customer Name</td>
-			                        <td><input type="text"></td>
+			                        <td>Vehicle</td>
+			                        <td>
+			                        	<select name="vehicle_id">
+			                        		<option value="">--None--</option>
+			                        		<c:forEach items="${vehicles}" var="vehicle">
+			                        			<option value="${vehicle.id}">${vehicle.model}</option>
+			                        		</c:forEach>
+			                        	</select>
+			                        </td>
 			                    </tr>
 			                    <tr>
-			                        <td>Vehicle ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Vehicle Name</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Service ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Service Name</td>
-			                        <td><input type="text"></td>
+			                        <td>Service</td>
+			                        <td>
+			                        	<select name="service_id">
+			                        		<option value="">--None--</option>
+			                        		<c:forEach items="${services}" var="service">
+			                        			<option value="${service.id}">${service.name}</option>
+			                        		</c:forEach>
+			                        	</select>
+			                        </td>
 			                    </tr>
 			                </table>
                         </form>
+                        <input id="clearBillingBtn" type="button" value="Clear">
                         <input id="searchBillingBtn" type="button" value="Search">
+                        <input id="submitUpdateBillingBtn" type="button" value="Update" style="display: none;">
+                        <div id="updateDeleteBillingResult"></div>
                         <div id="searchBillingResult"></div>
                     </div>
-                    <div id="billing-tab-sub-tabs-2">
-                        <form id="insertBillingForm">
-                            <table>
-			                    <tr>
-			                        <td>Billing ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Payment Method</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Payment Date</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Customer ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Customer Name</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Vehicle ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Vehicle Name</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Service ID</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Service Name</td>
-			                        <td><input type="text"></td>
-			                    </tr>
-			                </table>
-                        </form>
-                        <input id="insertBillingBtn" type="button" value="Insert">
-                        <div id="insertBillingResult"></div>
-                    </div>
+                    <c:if test="${currentUser.role == 'ADMIN'}">
+	                    <div id="billing-tab-sub-tabs-2">
+	                        <form id="insertBillingForm">
+	                            <table>
+				                    <tr>
+				                        <td>Payment Method</td>
+				                        <td><input type="text" name="payment_method"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Payment Date</td>
+				                        <td><input type="date" name="payment_date"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Customer</td>
+				                        <td>
+				                        	<select name="customer_id">
+				                        		<c:forEach items="${customers}" var="customer">
+				                        			<option value="${customer.id}">${customer.name}</option>
+				                        		</c:forEach>
+				                        	</select>
+				                        </td>
+				                    </tr>
+				                    <tr>
+				                        <td>Vehicle</td>
+				                        <td>
+				                        	<select name="vehicle_id">
+				                        		<c:forEach items="${vehicles}" var="vehicle">
+				                        			<option value="${vehicle.id}">${vehicle.model}</option>
+				                        		</c:forEach>
+				                        	</select>
+				                        </td>
+				                    </tr>
+				                    <tr>
+				                        <td>Service</td>
+				                        <td>
+				                        	<select name="service_id">
+				                        		<c:forEach items="${services}" var="service">
+				                        			<option value="${service.id}">${service.name}</option>
+				                        		</c:forEach>
+				                        	</select>
+				                        </td>
+				                    </tr>
+				                </table>
+	                        </form>
+	                        <input id="insertBillingBtn" type="button" value="Insert">
+	                        <div id="insertBillingResult"></div>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
             <div id="dealership-tab">
                 <div class="sub-tabs">
                     <ul>
                         <li><a href="#dealership-tab-sub-tabs-1">SEARCH</a></li>
-                        <li><a href="#dealership-tab-sub-tabs-2">INSERT</a></li>
+                        <c:if test="${currentUser.role == 'ADMIN'}">
+                        	<li><a href="#dealership-tab-sub-tabs-2">INSERT</a></li>
+                        </c:if>
                     </ul>
                     <div id="dealership-tab-sub-tabs-1">
                         <form id="searchDealershipForm">
@@ -425,25 +457,29 @@
                         <div id="updateDeleteDealershipResult"></div>
                         <div id="searchDealershipResult"></div>
                     </div>
-                    <div id="dealership-tab-sub-tabs-2">
-                        <form id="insertDealershipForm">
-                            <table>
-			                    <tr>
-			                        <td>Name</td>
-			                        <td><input type="text" name="name"></td>
-			                    </tr>
-			                </table>
-                        </form>
-                        <input id="insertDealershipBtn" type="button" value="Insert">
-                        <div id="insertDealershipResult"></div>
-                    </div>
+                    <c:if test="${currentUser.role == 'ADMIN'}">
+	                    <div id="dealership-tab-sub-tabs-2">
+	                        <form id="insertDealershipForm">
+	                            <table>
+				                    <tr>
+				                        <td>Name</td>
+				                        <td><input type="text" name="name"></td>
+				                    </tr>
+				                </table>
+	                        </form>
+	                        <input id="insertDealershipBtn" type="button" value="Insert">
+	                        <div id="insertDealershipResult"></div>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
             <div id="inventory-tab">
                 <div class="sub-tabs">
                     <ul>
                         <li><a href="#inventory-tab-sub-tabs-1">SEARCH</a></li>
-                        <li><a href="#inventory-tab-sub-tabs-2">INSERT</a></li>
+                        <c:if test="${currentUser.role == 'ADMIN'}">
+                        	<li><a href="#inventory-tab-sub-tabs-2">INSERT</a></li>
+                        </c:if>
                     </ul>
                     <div id="inventory-tab-sub-tabs-1">
                         <form id="searchInventoryForm">
@@ -468,22 +504,24 @@
                          <div id="updateDeleteInventoryResult"></div>
                         <div id="searchInventoryResult"></div>
                     </div>
-                    <div id="inventory-tab-sub-tabs-2">
-                        <form id="insertInventoryForm">
-                            <table>
-			                    <tr>
-			                        <td>Inventory Name</td>
-			                        <td><input type="text" name="name"></td>
-			                    </tr>
-			                    <tr>
-			                        <td>Address</td>
-			                        <td><input type="text" name="address"></td>
-			                    </tr>
-			                </table>
-                        </form>
-                        <input id="insertInventoryBtn" type="button" value="Insert">
-                        <div id="insertInventoryResult"></div>
-                    </div>
+                    <c:if test="${currentUser.role == 'ADMIN'}">
+	                    <div id="inventory-tab-sub-tabs-2">
+	                        <form id="insertInventoryForm">
+	                            <table>
+				                    <tr>
+				                        <td>Inventory Name</td>
+				                        <td><input type="text" name="name"></td>
+				                    </tr>
+				                    <tr>
+				                        <td>Address</td>
+				                        <td><input type="text" name="address"></td>
+				                    </tr>
+				                </table>
+	                        </form>
+	                        <input id="insertInventoryBtn" type="button" value="Insert">
+	                        <div id="insertInventoryResult"></div>
+	                    </div>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -1019,6 +1057,113 @@
                 });
                 
                 
+             // --- Billing-----
+                $("#searchBillingBtn").click(function(){
+                    $.ajax({
+                        url: "billing/search",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: $("#searchBillingForm").serializeArray(),
+                        success: function (responseXml) {
+                            $("#searchBillingResult").html($(responseXml).find("data").html());
+                        }
+                    });
+                 });
+                $('body').on('click','#editBillingBtn',function(){
+                	var element = this;
+                	
+                	$.ajax({
+                        url: "billing/search/json",
+                        method: "get",
+                        //contentType: "application/json",
+                        data: "id="+$(element).attr("billingid"),
+                        success: function (response) {
+                        	var arrayLength = response.length;
+                        	for (var i = 0; i < arrayLength; i++) {
+                        		$("#searchBillingForm input[name='id']").val(response[i].id);
+                        		$("#searchBillingForm input[name='id']").prop('disabled', true);
+                        		$("#searchBillingForm").append("<input type='hidden' value='"+ response[i].id + "' name='id'></input>");
+                        		$("#searchBillingForm input[name='payment_date']").val(response[i].payment_date);
+                        		$("#searchBillingForm input[name='payment_method']").val(response[i].payment_method);
+                        		$("#searchBillingForm select[name='service_id']").val(response[i].service_id);
+                        		$("#searchBillingForm select[name='customer_id']").val(response[i].customer_id);
+                        		$("#searchBillingForm select[name='vehicle_id']").val(response[i].vehicle_id);
+                        		$("#submitUpdateBillingBtn").css("display","inline");
+                        	}
+                        }
+                    });
+    		    });
+                $('body').on('click','#deleteBillingBtn',function(){
+                	var element = this;
+                	if (confirm("Are you sure want to delete this record?") == true) {
+                		$.ajax({
+                            url: "billing/delete",
+                            method: "post",
+                            data: "id="+$(element).attr("billingid"),
+                            success: function (response) {
+                            	if (response == "success") {
+                                	$("#updateDeleteBillingResult").html("Delete billing successfully");
+                                	$("#clearBillingBtn").click();
+                                	$("#searchBillingBtn").click();
+                                	
+                            	} else {
+                            		$("#updateDeleteBillingResult").html("Delete billing fail");
+                            	}
+                            }
+                        });
+                	}
+    		    });
+                $("#submitUpdateBillingBtn").click(function(){
+                	$.ajax({
+                        url: "billing/update",
+                        method: "post",
+                        data: $("#searchBillingForm").serializeArray(),
+                        success: function (response) {
+                        	if (response == "success") {
+                                $("#updateDeleteBillingResult").html("Update billing successfully");
+                        	} else {
+                        		$("#updateDeleteBillingResult").html("Update billing fail");
+                        	}
+                        }
+                    });
+                });
+                $("#insertBillingBtn").click(function(){
+                	var flag = false;
+                	$("#insertBillingForm input").each(function(index, value){
+                		if ($(value).val()==''){
+                			flag = true;
+                		}
+                	});
+                	if (flag == true) {
+                		alert("Please fill the form");
+                	} else {
+                		$.ajax({
+                            url: "billing/insert",
+                            method: "post",
+                            //contentType: "application/json",
+                            data: $("#insertBillingForm").serializeArray(),
+                            success: function (response) {
+                            	if (response == "success") {
+    	                            $("#insertBillingResult").html("Insert billing successfully");
+                            	} else {
+                            		$("#insertBillingResult").html("Insert billing fail");
+                            	}
+                            }
+                        });
+                	}
+                	
+                });
+                $("#clearBillingBtn").click(function(){
+                	$("#searchBillingForm").remove("input[type='hidden']");
+                	$("#searchBillingForm input[name='id']").prop('disabled', false);
+                	$("#searchBillingForm input[name='id']").val("");
+                	$("#searchBillingForm input[name='payment_date']").val("");
+                	$("#searchBillingForm input[name='payment_method']").val("");
+                	$("#searchBillingForm select[name='service_id']").val("");
+                	$("#searchBillingForm select[name='vehicle_id']").val("");
+                	$("#searchBillingForm select[name='customer_id']").val("");
+                	$("#submitUpdateBillingBtn").css("display","none");
+                });
                 
             });
             

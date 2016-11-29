@@ -69,7 +69,40 @@ public class VehicleDAO {
             }
             return vehicles;
         } catch (Exception e) {
-            logger.info("Find User get error with info: " + e);
+            logger.info("Find vehicle get error with info: " + e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+    
+    public List<Vehicle> findAllVehicle() {
+        Connection con = ConnectionManager.getConnection();
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT * FROM vehicle");
+
+            logger.info(sql);
+            PreparedStatement ps = con.prepareStatement(sql.toString());
+            ResultSet rs = ps.executeQuery();
+            List<Vehicle> vehicles = new ArrayList<Vehicle>();
+            while (rs.next()) {
+            	Vehicle c = new Vehicle();
+                c.setId(rs.getInt("vehicle_id"));
+                c.setModel(rs.getString("model"));
+                c.setPrice(rs.getInt("price"));
+                c.setYear(rs.getInt("year"));
+                c.setColor(rs.getString("color"));
+                vehicles.add(c);
+            }
+            return vehicles;
+        } catch (Exception e) {
+            logger.info("Find vehicle get error with info: " + e);
         } finally {
             try {
                 con.close();

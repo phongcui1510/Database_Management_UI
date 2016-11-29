@@ -87,6 +87,38 @@ public class CustomerDAO {
         return null;
     }
     
+    public List<Customer> findAllCustomer() {
+        Connection con = ConnectionManager.getConnection();
+        try {
+            StringBuffer sql = new StringBuffer();
+            sql.append("SELECT * FROM customer");
+            logger.info(sql);
+            PreparedStatement ps = con.prepareStatement(sql.toString());
+            ResultSet rs = ps.executeQuery();
+            List<Customer> customers = new ArrayList<Customer>();
+            while (rs.next()) {
+                Customer c = new Customer();
+                c.setId(rs.getInt("customer_id"));
+                c.setName(rs.getString("name"));
+                c.setAddress(rs.getString("address"));
+                c.setPhone(rs.getString("phone_no"));
+                c.setEmail(rs.getString("email"));
+                customers.add(c);
+            }
+            return customers;
+        } catch (Exception e) {
+            logger.info("Find User get error with info: " + e);
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+    
     public int insertCustomer (Customer customer) {
     	Connection con = ConnectionManager.getConnection();
 		try{  

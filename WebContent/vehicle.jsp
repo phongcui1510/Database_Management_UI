@@ -9,6 +9,9 @@
             <th>Year</th>
             <th>Color</th>
             <th>Price</th>
+            <c:if test="${currentUser.role == 'ADMIN'}">
+            	<th>Action</th>
+            </c:if>
         </tr>
         <c:forEach var="vehicle" items="${vehicles}">
             <tr>
@@ -17,10 +20,12 @@
                 <td>${vehicle.year}</td>
                 <td>${vehicle.color}</td>
                 <td>${vehicle.price}</td>
-                <td>
-                	<a id="editVehicleBtn" vehicleid="${vehicle.id}" href="#">Edit</a>
-                	<a id="deleteVehicleBtn" vehicleid="${vehicle.id}" href="#">Delete</a>
-                </td>
+                <c:if test="${currentUser.role == 'ADMIN'}">
+	                <td>
+	                	<a id="editVehicleBtn" vehicleid="${vehicle.id}" href="#">Edit</a>
+	                	<a id="deleteVehicleBtn" vehicleid="${vehicle.id}" href="#">Delete</a>
+	                </td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>

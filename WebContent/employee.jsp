@@ -10,7 +10,9 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Dealership</th>
-            <th>Action</th>
+            <c:if test="${currentUser.role == 'ADMIN'}">
+            	<th>Action</th>
+            </c:if>
         </tr>
         <c:forEach var="employee" items="${employees}">
             <tr>
@@ -20,10 +22,12 @@
                 <td>${employee.phone}</td>
                 <td>${employee.email}</td>
                 <td>${employee.dealership}</td>
-                <td>
-                	<a id="editEmployeeBtn" employeeid="${employee.id}" href="#">Edit</a>
-                	<a id="deleteEmployeeBtn" employeeid="${employee.id}" href="#">Delete</a>
-                </td>
+                <c:if test="${currentUser.role == 'ADMIN'}">
+	                <td>
+	                	<a id="editEmployeeBtn" employeeid="${employee.id}" href="#">Edit</a>
+	                	<a id="deleteEmployeeBtn" employeeid="${employee.id}" href="#">Delete</a>
+	                </td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>

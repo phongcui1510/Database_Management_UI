@@ -9,7 +9,9 @@
             <th>Address</th>
             <th>Phone</th>
             <th>Email</th>
-            <th>Action</th>
+            <c:if test="${currentUser.role == 'ADMIN'}">
+            	<th>Action</th>
+            </c:if>
         </tr>
         <c:forEach var="customer" items="${customers}">
             <tr>
@@ -18,10 +20,12 @@
                 <td>${customer.address}</td>
                 <td>${customer.phone}</td>
                 <td>${customer.email}</td>
-                <td>
-                	<a id="editCustomerBtn" customerid="${customer.id}" href="#">Edit</a>
-                	<a id="deleteCustomerBtn" customerid="${customer.id}" href="#">Delete</a>
-                </td>
+                <c:if test="${currentUser.role == 'ADMIN'}">
+	                <td>
+	                	<a id="editCustomerBtn" customerid="${customer.id}" href="#">Edit</a>
+	                	<a id="deleteCustomerBtn" customerid="${customer.id}" href="#">Delete</a>
+	                </td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>

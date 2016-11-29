@@ -6,15 +6,20 @@
         <tr>
             <th>Dealership ID</th>
             <th>Name</th>
+            <c:if test="${currentUser.role == 'ADMIN'}">
+            	<th>Action</th>
+            </c:if>
         </tr>
         <c:forEach var="dealership" items="${dealerships}">
             <tr>
                 <td>${dealership.id}</td>
                 <td>${dealership.name}</td>
-                <td>
-                	<a id="editDealershipBtn" dealershipid="${dealership.id}" href="#">Edit</a>
-                	<a id="deleteDealershipBtn" dealershipid="${dealership.id}" href="#">Delete</a>
-                </td>
+                <c:if test="${currentUser.role == 'ADMIN'}">
+	                <td>
+	                	<a id="editDealershipBtn" dealershipid="${dealership.id}" href="#">Edit</a>
+	                	<a id="deleteDealershipBtn" dealershipid="${dealership.id}" href="#">Delete</a>
+	                </td>
+                </c:if>
             </tr>
         </c:forEach>
     </table>

@@ -11,10 +11,16 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import ui.database.mgm.dao.CustomerDAO;
 import ui.database.mgm.dao.DealershipDAO;
+import ui.database.mgm.dao.ServiceDAO;
 import ui.database.mgm.dao.UserDAO;
+import ui.database.mgm.dao.VehicleDAO;
+import ui.database.mgm.model.Customer;
 import ui.database.mgm.model.Dealership;
+import ui.database.mgm.model.Service;
 import ui.database.mgm.model.User;
+import ui.database.mgm.model.Vehicle;
 
 public class UserServletController extends HttpServlet {
 
@@ -26,6 +32,12 @@ public class UserServletController extends HttpServlet {
 	private static final Logger logger = Logger.getLogger (UserServletController.class);
 	
 	private UserDAO userDao = new UserDAO();
+	
+	private ServiceDAO serviceDao = new ServiceDAO();
+	
+	private VehicleDAO vehicleDao = new VehicleDAO();
+	
+	private CustomerDAO customerDao = new CustomerDAO();
 	
 	private DealershipDAO dealershipDao = new DealershipDAO();
 
@@ -39,7 +51,7 @@ public class UserServletController extends HttpServlet {
 		} else if (url.contains("logout")) {
 			HttpSession session = req.getSession();
 			session.invalidate();
-			resp.sendRedirect("home.jsp");
+			resp.sendRedirect("login.jsp");
 		}
 	}
 
@@ -52,7 +64,13 @@ public class UserServletController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("currentUser", user);
 			List<Dealership> dealerships = dealershipDao.findAllDealership();
+			List<Service> services = serviceDao.findAllService();
+			List<Customer> customers = customerDao.findAllCustomer();
+			List<Vehicle> vehicles = vehicleDao.findAllVehicle();
 			request.setAttribute("dealerships", dealerships);
+			request.setAttribute("services", services);
+			request.setAttribute("customers", customers);
+			request.setAttribute("vehicles", vehicles);
 			request.getRequestDispatcher("home.jsp").forward(request,response);
 		} else {
 			response.sendRedirect("login.jsp");

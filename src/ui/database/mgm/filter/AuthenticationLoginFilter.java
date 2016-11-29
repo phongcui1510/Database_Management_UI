@@ -36,17 +36,16 @@ public class AuthenticationLoginFilter implements Filter {
 		
 		if(session == null || (session != null && session.getAttribute("currentUser") == null)){
 			this.context.log("Unauthorized access request");
-			res.sendRedirect(req.getContextPath() + "/home");
+			res.sendRedirect(req.getContextPath() + "/login");
 		}else{
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
 		}
 	}
 
-	@Override
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-
+	public void init(FilterConfig fConfig) throws ServletException {
+		this.context = fConfig.getServletContext();
+		this.context.log("AuthenticationFilter initialized");
 	}
 
 }

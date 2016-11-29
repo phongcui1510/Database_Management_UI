@@ -45,6 +45,14 @@
         <servlet-name>InventoryServletController</servlet-name>
         <url-pattern>/inventory/*</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>BillingServletController</servlet-name>
+        <servlet-class>ui.database.mgm.controller.BillingServletController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BillingServletController</servlet-name>
+        <url-pattern>/billing/*</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>HomeServletController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -59,6 +67,14 @@
         <url-pattern>/login</url-pattern>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+     <filter>
+    <filter-name>AuthenticationLoginFilter</filter-name>
+    <filter-class>ui.database.mgm.filter.AuthenticationLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthenticationLoginFilter</filter-name>
+    <url-pattern>/home</url-pattern>
+  </filter-mapping>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
